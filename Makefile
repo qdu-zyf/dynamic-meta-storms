@@ -1,8 +1,3 @@
-CC:=$(CXX)
-ifneq (,$(findstring Darwin,$(shell uname)))
-	CC:=$(CLANGXX)
-endif 
-
 OMPFLG=-fopenmp
 HASHFLG=-Wno-deprecated
 BUILDFLG=-w -ffunction-sections -fdata-sections -fmodulo-sched -msse
