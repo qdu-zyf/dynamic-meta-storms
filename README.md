@@ -1,7 +1,7 @@
 # Dynamic Meta-Storms
 
-![Version](https://img.shields.io/badge/Version-1.01%20for%20MetaPhlAn2-brightgreen)
-![Release date](https://img.shields.io/badge/Release%20date-Oct.%2014%2C%202019-brightgreen.svg)
+![Version](https://img.shields.io/badge/Version-1.1-brightgreen)
+![Release date](https://img.shields.io/badge/Release%20date-Dec.%207%2C%202020-brightgreen.svg)
 
 
 
@@ -32,7 +32,7 @@ Dynamic Meta-Storms only requires a standard computer with sufficient RAM to sup
 ## Software Requirements
 
 OpenMP library is the C/C++ parallel computing library. Most Linux releases have OpenMP already been installed in the system. In Mac OS X, to install the compiler that supports OpenMP, we recommend using the Homebrew package manager:
-```
+```shell
 brew install gcc
 ```
 
@@ -77,6 +77,7 @@ source ~/.bashrc
 cd dynamic-meta-storms
 make
 ```
+
 # Usage
 **a. Metagenomic species-level profiling by MetaPhlAn2**
 
@@ -100,7 +101,6 @@ Sample_3	profiled_sample_3.sp.txt
 ……
 Sample_N	profiled_sample_N.sp.txt
 ```
-
 The first column is the sample ID and the second column is the path of profiling result file. Then run:
 ```
 MS-single-to-table -l samples.list.txt -o samples.sp.table
@@ -108,14 +108,21 @@ MS-single-to-table -l samples.list.txt -o samples.sp.table
 This step can be ignored if you have already obtained the species-level relative abundance table by MetaPhlAn2 (e.g. [Example dataset](#example-dataset) in below).
 
 **c. Compute the distance matrix**
+
+In this step, you can compute distance matrix for relative abundance table by
 ```
 MS-comp-taxa-dynamic -T samples.sp.table -o samples.sp.dist
 ```
-The output file “samples.sp.dist” is the pairwise distance matrix. 
+The output file “samples.sp.dist” is the pairwise distance matrix computed with MetaPhlAn2 tree and taxonomy.
+
+The reference trees of MetaPhlAn2 and MetaPhlAn3 have been integrated in the package, and the default is MetaPhlAn2. If your taxonomy abundance table was profiled by MetaPhlAn3, You can also use the MetaPhlAn3 as the reference by the -D option.
+```
+MS-comp-taxa-dynamic -D M -T samples.sp.table -o samples.sp.dist
+```
 
 **d. Make a customized reference**
 
-The default reference is MetaPhlAn2 tree and taxonomy, which have been interated in the package. To make a customized reference, please input a reference phylogeny tree in Newick format (tip nodes are species names), and a reference full taxonomy of the species in tabular format.
+To make a customized reference, please input a reference phylogeny tree in Newick format (tip nodes are species names), and a reference full taxonomy of the species in tabular format.
 ```
 MS-make-ref -i tree.newick -r tree.taxonomy -o tree.dms
 ```
@@ -130,7 +137,8 @@ Then you can compute the distance matrix with the customized reference:
 ```
 MS-comp-taxa-dynamic -D tree.dms -T samples.sp.table -o samples.sp.dist
 ```
-The source files of MetaPhlAn2 tree and taxonomy for example of customized reference is available as [Supplementary](#supplementary).
+The source files of both MetaPhlAn2 and MetaPhlAn3 tree and taxonomy for example of customized reference is available as [Supplementary](#supplementary).
+
 # Example dataset
 Here we provide a demo dataset (Synthetic Dataset 1) with species abundance of 40 synthetic metagenomic samples in “example” folder. In this package, “dataset1.sp.abd” is the relative abundance on species-level, and “dataset1.meta” is the group information of the samples.
 
@@ -188,7 +196,6 @@ MS-make-ref -h
 ```
 for detailed parameters.
 
-
 # Supplementary
 
 [Synthetic Dataset 1](http://bioinfo.single-cell.cn/Released_Software/dynamic-meta-storms/data/synthetic_dataset_1.tar.gz) contains 40 synthetic metagenomes that are derived from 48 bacteria species.
@@ -201,6 +208,8 @@ for detailed parameters.
 
 [Source files](http://bioinfo.single-cell.cn/Released_Software/dynamic-meta-storms/data/metaphlan2.tree.tar.gz) of MetaPhlAn2 tree and taxonomy.
 
-# Citation
+[Source files](http://bioinfo.single-cell.cn/Released_Software/dynamic-meta-storms/data/metaphlan3.tree.tar.gz) of MetaPhlAn3 tree and taxonomy.
+
+# Citations
 
 G. Jing, Y. Zhang, M. Yang, L. Liu, J. Xu, X. Su*, Dynamic Meta-Storms enables comprehensive taxonomic and phylogenetic comparison of shotgun metagenomes at the species level, *Bioinformatics*, 2019
