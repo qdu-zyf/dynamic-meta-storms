@@ -1,6 +1,6 @@
 OMPFLG=-fopenmp
 ifneq (,$(findstring Darwin,$(shell uname)))
-	OMPFLG=-lomp
+	OMPFLG=-fopenmp -lomp
 endif 
 HASHFLG=-Wno-deprecated
 BUILDFLG=-w -ffunction-sections -fdata-sections -fmodulo-sched -msse
