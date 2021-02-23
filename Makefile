@@ -1,4 +1,7 @@
 OMPFLG=-fopenmp
+ifneq (,$(findstring Darwin,$(shell uname)))
+	OMPFLG=-lomp
+endif 
 HASHFLG=-Wno-deprecated
 BUILDFLG=-w -ffunction-sections -fdata-sections -fmodulo-sched -msse
 EXE_TAL=bin/MS-single-to-table
