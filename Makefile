@@ -7,10 +7,10 @@ EXE_CMP=bin/MS-comp-taxa
 EXE_CPD=bin/MS-comp-taxa-dynamic
 EXE_MMR=bin/MS-make-ref
 tax:
-	$(CXX) -o $(EXE_TAL) src/taxa_sel.cpp $(HASHFLG) $(BUILDFLG) $(CFLAGS) $(OMPFLG)
-	$(CXX) -o $(EXE_T2S) src/table2single.cpp $(HASHFLG) $(BUILDFLG) $(CFLAGS) $(OMPFLG)
-	$(CXX) -o $(EXE_CMP) src/comp_sam.cpp $(HASHFLG) $(BUILDFLG) $(CFLAGS) $(OMPFLG)
-	$(CXX) -o $(EXE_CPD) src/comp_sam_dynamic.cpp $(HASHFLG) $(BUILDFLG) $(CFLAGS) $(OMPFLG)
-	$(CXX) -o $(EXE_MMR) src/make_ref.cpp $(HASHFLG) $(BUILDFLG) $(CFLAGS) $(OMPFLG)
+	$(CXX) -o $(EXE_TAL) –static src/taxa_sel.cpp $(HASHFLG) $(BUILDFLG) $(CFLAGS) $(OMPFLG)
+	$(CXX) -o $(EXE_T2S) –static src/table2single.cpp $(HASHFLG) $(BUILDFLG) $(CFLAGS) $(OMPFLG)
+	$(CXX) -o $(EXE_CMP) –static src/comp_sam.cpp $(HASHFLG) $(BUILDFLG) $(CFLAGS) $(OMPFLG)
+	$(CXX) -o $(EXE_CPD) –static src/comp_sam_dynamic.cpp $(HASHFLG) $(BUILDFLG) $(CFLAGS) $(OMPFLG)
+	$(CXX) -o $(EXE_MMR) –static src/make_ref.cpp $(HASHFLG) $(BUILDFLG) $(CFLAGS) $(OMPFLG)
 clean:
 	rm -rf bin/* src/*.o
