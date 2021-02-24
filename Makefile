@@ -7,10 +7,10 @@ EXE_CMP=bin/MS-comp-taxa
 EXE_CPD=bin/MS-comp-taxa-dynamic
 EXE_MMR=bin/MS-make-ref
 tax:
-	$(CXX) -o $(EXE_TAL) src/taxa_sel.cpp $(HASHFLG) $(BUILDFLG) -L$(INCFLG) $(OMPFLG)
-	$(CXX) -o $(EXE_T2S) src/table2single.cpp $(HASHFLG) $(BUILDFLG) -L$(INCFLG) $(OMPFLG)
-	$(CXX) -o $(EXE_CMP) src/comp_sam.cpp $(HASHFLG) $(BUILDFLG) -L$(INCFLG) $(OMPFLG)
-	$(CXX) -o $(EXE_CPD) src/comp_sam_dynamic.cpp $(HASHFLG) $(BUILDFLG) -L$(INCFLG) $(OMPFLG)
-	$(CXX) -o $(EXE_MMR) src/make_ref.cpp $(HASHFLG) $(BUILDFLG) -L$(INCFLG) $(OMPFLG)
+	$(CXX) -o $(EXE_TAL) src/taxa_sel.cpp $(HASHFLG) $(BUILDFLG) -L$(CMAKE_PREFIX_PATH)/include $(OMPFLG)
+	$(CXX) -o $(EXE_T2S) src/table2single.cpp $(HASHFLG) $(BUILDFLG) -L$(CMAKE_PREFIX_PATH)/include $(OMPFLG)
+	$(CXX) -o $(EXE_CMP) src/comp_sam.cpp $(HASHFLG) $(BUILDFLG) -L$(CMAKE_PREFIX_PATH)/include $(OMPFLG)
+	$(CXX) -o $(EXE_CPD) src/comp_sam_dynamic.cpp $(HASHFLG) $(BUILDFLG) -L$(CMAKE_PREFIX_PATH)/include $(OMPFLG)
+	$(CXX) -o $(EXE_MMR) src/make_ref.cpp $(HASHFLG) $(BUILDFLG) -L$(CMAKE_PREFIX_PATH)/include $(OMPFLG)
 clean:
 	rm -rf bin/* src/*.o
