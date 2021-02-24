@@ -1,6 +1,6 @@
 OMPFLG=-fopenmp
 ifneq (,$(findstring Darwin,$(shell uname)))
-	OMPFLG=-L$(CONDA_PREFIX)/lib -lomp -fopenmp
+	OMPFLG=-L$(PREFIX)/include -fopenmp
 endif 
 HASHFLG=-Wno-deprecated
 BUILDFLG=-w -ffunction-sections -fdata-sections -fmodulo-sched -msse
