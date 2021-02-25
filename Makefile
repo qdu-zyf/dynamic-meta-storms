@@ -1,4 +1,4 @@
-CXXFLAG=-march=core2 -mtune=haswell -mssse3 -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -stdlib=libc++ -fvisibility-inlines-hidden -std=c++14 -fmessage-length=0 -isystem $PREFIX/include -fdebug-prefix-map=$SRC_DIR=/usr/local/src/conda/dms-v1.1 -fdebug-prefix-map=$PREFIX=/usr/local/src/conda-prefix
+CXXFLAG=-march=core2 -mtune=haswell -mssse3 -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -fvisibility-inlines-hidden -std=c++11 -fmessage-length=0 -isystem $PREFIX/include -fdebug-prefix-map=$SRC_DIR=/usr/local/src/conda/dms-v1.1 -fdebug-prefix-map=$PREFIX=/usr/local/src/conda-prefix
 OMPFLG=-fopenmp
 HASHFLG=-Wno-deprecated
 BUILDFLG=-w -ffunction-sections -fdata-sections -fmodulo-sched -msse
