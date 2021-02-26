@@ -1,4 +1,4 @@
-CXXFLAG=-L$PREFIX/include -l$PREFIX/lib
+CXXFLAG=-L$(PREFIX)/include -l$(PREFIX)/lib
 OMPFLG=-fopenmp -std=c++11
 HASHFLG=-Wno-deprecated
 BUILDFLG=-w -ffunction-sections -fdata-sections -fmodulo-sched -msse
