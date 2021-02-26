@@ -1,3 +1,4 @@
+CXXFLAG=-L$PREFIX/include -l$PREFIX/lib
 OMPFLG=-fopenmp -std=c++11
 HASHFLG=-Wno-deprecated
 BUILDFLG=-w -ffunction-sections -fdata-sections -fmodulo-sched -msse
@@ -7,10 +8,10 @@ EXE_CMP=bin/MS-comp-taxa
 EXE_CPD=bin/MS-comp-taxa-dynamic
 EXE_MMR=bin/MS-make-ref
 tax:
-	$(CXX) -o $(EXE_TAL) src/taxa_sel.cpp $(HASHFLG) $(BUILDFLG) $(CXXFLAGS) $(OMPFLG)  
-	$(CXX) -o $(EXE_T2S) src/table2single.cpp $(HASHFLG) $(BUILDFLG) $(CXXFLAGS) $(OMPFLG)  
-	$(CXX) -o $(EXE_CMP) src/comp_sam.cpp $(HASHFLG) $(BUILDFLG) $(CXXFLAGS) $(OMPFLG)  
-	$(CXX) -o $(EXE_CPD) src/comp_sam_dynamic.cpp $(HASHFLG) $(BUILDFLG) $(CXXFLAGS) $(OMPFLG)  
-	$(CXX) -o $(EXE_MMR) src/make_ref.cpp $(HASHFLG) $(BUILDFLG) $(CXXFLAGS) $(OMPFLG)  
+	$(CXX) -o $(EXE_TAL) src/taxa_sel.cpp $(HASHFLG) $(BUILDFLG) $(CXXFLAG) $(OMPFLG)  
+	$(CXX) -o $(EXE_T2S) src/table2single.cpp $(HASHFLG) $(BUILDFLG) $(CXXFLAG) $(OMPFLG)  
+	$(CXX) -o $(EXE_CMP) src/comp_sam.cpp $(HASHFLG) $(BUILDFLG) $(CXXFLAG) $(OMPFLG)  
+	$(CXX) -o $(EXE_CPD) src/comp_sam_dynamic.cpp $(HASHFLG) $(BUILDFLG) $(CXXFLAG) $(OMPFLG)  
+	$(CXX) -o $(EXE_MMR) src/make_ref.cpp $(HASHFLG) $(BUILDFLG) $(CXXFLAG) $(OMPFLG)  
 clean:
 	rm -rf bin/* src/*.o
