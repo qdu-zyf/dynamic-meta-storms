@@ -1,6 +1,6 @@
 INCLUDES=-I$(PREFIX)/include 
 CFLAGS=-g -Wall -O2 -Wc++-compat -L$(PREFIX)/lib -fopenmp 
-LIBS=-lm -lz -lpthread
+LIBS=-lm -lpthread
 OMPFLG=-fopenmp -std=c++11
 HASHFLG=-Wno-deprecated
 BUILDFLG=-w -ffunction-sections -fdata-sections -fmodulo-sched -msse
