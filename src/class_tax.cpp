@@ -79,7 +79,7 @@ int Parse_Para(int argc, char * argv[]){
     
     while(i<argc){
          if (argv[i][0] != '-') {
-                           printf("Argument # %d Error : Arguments must start with -\n", i);
+                           cout << "Argument # " << i << " Error : Arguments must start with -" << endl;
                            exit(0);
                            };           
          switch(argv[i][1]){
@@ -128,7 +128,7 @@ int Parse_Para(int argc, char * argv[]){
                             case 'd': Depth = atoi(argv[i+1]); break;
                             case 'h': printhelp(); break;
 
-                            default : printf("Error: Unrec argument %s\n", argv[i]); printhelp(); break; 
+                            default : cout << "Error: Unrec argument " << argv[i] << endl; printhelp(); break; 
                             }
          i+=2;
          }

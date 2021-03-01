@@ -129,7 +129,7 @@ void Parse_Para(int argc, char * argv[]){
       
       while(i<argc){
          if (argv[i][0] != '-') {
-                           printf("Argument # %d Error : Arguments must start with -\n", i);
+                           cout << "Argument # " << i << " Error : Arguments must start with -" << endl;
                            exit(0);
                            };           
          switch(argv[i][1]){
@@ -163,7 +163,7 @@ void Parse_Para(int argc, char * argv[]){
                             //case 'z': No_zero_rate = atof(argv[i+1]); break;
                             //case 'v': Ave_t = atof(argv[i+1]); break;
                             case 'h': Print_Help(); break;
-                            default : printf("Error: Unrec argument %s\n", argv[i]); Print_Help(); break; 
+                            default : cout << "Error: Unrec argument " << argv[i] << endl; Print_Help(); break; 
                             }
          i+=2;
          }
