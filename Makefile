@@ -1,11 +1,4 @@
-CXX=g++ -openmp -DOMP
-
-MESS = "Compiling with parallel support."
-ifeq ($(OMP),no)
-        CXX  = g++ 
-        MESS = "Compiling with NO parallel support."
-endif
-
+OMPFLG=-fopenmp
 HASHFLG=-Wno-deprecated
 BUILDFLG=-w -ffunction-sections -fdata-sections -fmodulo-sched -msse
 EXE_TAL=$(PREFIX)/bin/MS-single-to-table
@@ -14,10 +7,10 @@ EXE_CMP=$(PREFIX)/bin/MS-comp-taxa
 EXE_CPD=$(PREFIX)/bin/MS-comp-taxa-dynamic
 EXE_MMR=$(PREFIX)/bin/MS-make-ref
 tax:
-	$(CXX) -o $(EXE_TAL) src/taxa_sel.cpp $(HASHFLG) $(BUILDFLG)   
-	$(CXX) -o $(EXE_T2S) src/table2single.cpp $(HASHFLG) $(BUILDFLG) 
-	$(CXX) -o $(EXE_CMP) src/comp_sam.cpp $(HASHFLG) $(BUILDFLG) 
-	$(CXX) -o $(EXE_CPD) src/comp_sam_dynamic.cpp $(HASHFLG) $(BUILDFLG) 
-	$(CXX) -o $(EXE_MMR) src/make_ref.cpp $(HASHFLG) $(BUILDFLG) 
+	$(CXX) -o $(EXE_TAL) src/taxa_sel.cpp $(HASHFLG) $(OMPFLG) $(BUILDFLG)   
+	$(CXX) -o $(EXE_T2S) src/table2single.cpp $(HASHFLG) $(OMPFLG) $(BUILDFLG) 
+	$(CXX) -o $(EXE_CMP) src/comp_sam.cpp $(HASHFLG) $(OMPFLG) $(BUILDFLG) 
+	$(CXX) -o $(EXE_CPD) src/comp_sam_dynamic.cpp $(HASHFLG) $(OMPFLG) $(BUILDFLG) 
+	$(CXX) -o $(EXE_MMR) src/make_ref.cpp $(HASHFLG) $(OMPFLG) $(BUILDFLG) 
 clean:
 	rm -rf $(PREFIX)/bin/* src/*.o
