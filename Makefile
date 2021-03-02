@@ -1,9 +1,8 @@
-DEFAULT_FLG=-static
-CXX=g++ -openmp -DOMP $(DEFAULT_FLG)
+CXX=g++ -openmp -DOMP
 
 MESS = "Compiling with parallel support."
 ifeq ($(OMP),no)
-        CXX  = g++ $(DEFAULT_FLAGS)
+        CXX  = g++ 
         MESS = "Compiling with NO parallel support."
 endif
 
